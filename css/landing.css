@@ -1,0 +1,185 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: rgba(0, 128, 0, 0.7); /* Green with transparency */
+  padding: 12px 0; /* Adjusted padding */
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.5em; /* Adjusted font size */
+  color: #ffffff;
+}
+
+#categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px 20px 60px 20px; /* Top padding accounts for fixed header */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category {
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Ensure vertical stacking */
+  align-items: center;
+}
+
+.category h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff6600;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto); /* 5 columns sizing based on image */
+  gap: 15px;
+  width: 100%;
+  justify-content: center; /* Center the grid */
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #ff6600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  object-fit: cover; /* Ensures images cover the entire grid cell without distortion */
+}
+
+.image-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.more-button {
+  display: block;
+  margin: 20px auto 0; /* Centers the button and adds top margin */
+  padding: 12px 36px; /* Increased padding for better visibility */
+  background-color: #ff6600;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.2em; /* Increased font size for better visibility */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.more-button:hover {
+  background-color: #e65c00;
+  transform: translateY(-3px);
+}
+
+footer {
+  background-color: rgba(128, 128, 128, 0.7); /* Gray with transparency */
+  padding: 7.5px 0; /* Adjusted padding */
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
+}
+
+footer p {
+  font-size: 0.45em; /* Adjusted font size */
+  color: #ffffff;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+  .image-grid {
+    gap: 15px;
+  }
+
+  .more-button {
+    padding: 14px 42px; /* Further increase for larger screens */
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .image-grid {
+    gap: 12px;
+  }
+
+  .more-button {
+    padding: 13px 39px;
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.2em; /* Adjusted for smaller screens */
+  }
+
+  .category h2 {
+    font-size: 1.8em;
+  }
+
+  .image-grid {
+    gap: 10px;
+  }
+
+  .more-button {
+    padding: 11px 33px; /* Adjust padding */
+    font-size: 1.1em;
+  }
+
+  footer p {
+    font-size: 0.5em; /* Adjusted for better readability */
+  }
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    gap: 8px;
+  }
+
+  .more-button {
+    padding: 10px 30px; /* Adjust padding */
+    font-size: 1em;
+  }
+
+  footer p {
+    font-size: 0.45em; /* Maintain font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid {
+    gap: 5px;
+  }
+
+  .more-button {
+    padding: 9px 27px; /* Further adjust padding */
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.4em; /* Further adjust font size */
+  }
+}

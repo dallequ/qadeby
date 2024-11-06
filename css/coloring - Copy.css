@@ -1,0 +1,221 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #e6f2ff;
+  color: #333;
+}
+
+main#coloring-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto; /* Center the container */
+}
+
+.coloring-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#canvasContainer {
+  position: relative;
+  width: 800px; /* Increased width for desktop */
+  height: 600px; /* Increased height for desktop */
+  border: 5px solid gold; /* Gold frame */
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px; /* Match container width */
+  height: 600px; /* Match container height */
+  touch-action: none; /* Prevent default touch behaviors */
+}
+
+#outlineLayer {
+  z-index: 2; /* Above the fill layer */
+  pointer-events: none; /* Prevent outline layer from intercepting clicks */
+}
+
+#fillLayer {
+  z-index: 1; /* Below the outline layer */
+}
+
+#controlsContainer {
+  display: flex;
+  flex-direction: row; /* Arrange color palette and control buttons side by side */
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px; /* Match canvas width */
+}
+
+#colorPalette {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 columns */
+  grid-template-rows: repeat(3, 35px); /* 3 rows, 35px height each */
+  gap: 4px; /* Reduced gap between color buttons */
+  width: 70%; /* Allocate 70% width to color palette */
+}
+
+.color-button {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ffffff; /* Reduced border thickness */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-button:hover, .color-button:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Selected Color Button Indicator */
+.color-button.selected {
+  border: 3px solid #000000; /* Black border to indicate selection */
+}
+
+#controlButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Reduced gap for smaller buttons */
+  margin-left: 20px;
+  width: 25%; /* Allocate 25% width to control buttons */
+}
+
+#controlButtons button {
+  padding: 6px 10px; /* Smaller size to fit beside color palette */
+  background-color: #ff9933;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85em; /* Smaller font size */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#controlButtons button:hover, #controlButtons button:focus {
+  background-color: #e68a00;
+  transform: translateY(-2px);
+}
+
+footer {
+  background-color: rgba(128, 128, 128, 0.7); /* Gray with transparency */
+  padding: 7.5px 0; /* Reduced padding */
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
+}
+
+footer p {
+  font-size: 0.45em; /* Reduced font size */
+  color: #ffffff;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+  #canvasContainer {
+    width: 700px; /* Adjusted width */
+    height: 525px; /* Adjusted height */
+  }
+
+  canvas {
+    width: 700px; /* Adjusted to match container */
+    height: 525px; /* Adjusted to match container */
+  }
+
+  #colorPalette {
+    grid-template-rows: repeat(3, 30px); /* Adjust row height */
+    gap: 3px; /* Further reduced gap */
+  }
+
+  #controlButtons button {
+    padding: 5px 8px; /* Further reduced size */
+    font-size: 0.8em;
+  }
+
+  footer p {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  #controlsContainer {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: center;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #colorPalette {
+    grid-template-rows: repeat(3, 30px); /* Adjust row height */
+    gap: 3px; /* Further reduced gap */
+    width: 90%;
+  }
+
+  #controlButtons {
+    flex-direction: row; /* Arrange buttons horizontally if space allows */
+    gap: 8px;
+    margin-left: 0;
+    margin-top: 10px;
+    width: 90%;
+    justify-content: center;
+  }
+
+  #controlButtons button {
+    padding: 5px 8px; /* Smaller buttons */
+    font-size: 0.75em;
+  }
+
+  footer p {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  #colorPalette {
+    grid-template-columns: repeat(6, 35px);
+    grid-template-rows: repeat(3, 35px);
+    gap: 2px;
+    width: 100%;
+  }
+
+  .color-button {
+    border: 2px solid #ffffff;
+  }
+
+  #controlButtons {
+    flex-direction: column; /* Stack vertically again if horizontal doesn't fit */
+    gap: 6px;
+    width: 100%;
+  }
+
+  #controlButtons button {
+    padding: 4px 6px;
+    font-size: 0.7em;
+  }
+
+  footer p {
+    font-size: 0.4em;
+  }
+}

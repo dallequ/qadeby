@@ -1,0 +1,189 @@
+/* coloring.css */
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #e6f2ff;
+  color: #333;
+}
+
+main#coloring-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.coloring-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#canvasContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Updated to 600px */
+  aspect-ratio: 3 / 2; /* Updated aspect ratio for 600x400 */
+  border: 5px solid gold;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+#outlineLayer {
+  z-index: 2; /* Above the fill layer */
+  pointer-events: none;
+}
+
+#fillLayer {
+  z-index: 1; /* Below the outline layer */
+}
+
+#controlsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 10px;
+  width: 100%;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+#colorPalette {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* 9 columns */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows */
+  gap: 5px;
+  width: 50%; /* Adjust width relative to canvas */
+  max-width: 300px; /* Optional: Limit maximum width */
+  margin-right: 20px; /* Space between color palette and buttons */
+}
+
+.color-button {
+  width: 100%;
+  padding-bottom: 100%; /* Maintains square aspect ratio */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  position: relative;
+}
+
+.color-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.color-button:hover,
+.color-button:focus {
+  transform: scale(1.1);
+}
+
+.color-button.selected {
+  border: 2px solid #000;
+}
+
+#controlButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%; /* Adjust width relative to canvas */
+  max-width: 200px; /* Optional: Limit maximum width */
+}
+
+.control-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#controlButtons button {
+  flex: 1; /* Buttons take equal available space */
+  padding: 10px;
+  background-color: #ff9933;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+#controlButtons button:hover,
+#controlButtons button:focus {
+  background-color: #e68a00;
+}
+
+footer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 800px) {
+  #controlsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #colorPalette,
+  #controlButtons {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+  }
+
+  #colorPalette {
+    margin-bottom: 10px;
+  }
+
+  .control-row {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  #colorPalette {
+    grid-template-columns: repeat(9, minmax(25px, 1fr)); /* Adjust columns for smaller screens */
+    grid-template-rows: repeat(2, minmax(25px, 1fr)); /* Ensure 2 rows */
+    gap: 3px;
+  }
+
+  .color-button {
+    padding-bottom: 100%; /* Maintains square aspect ratio */
+  }
+
+  #controlButtons button {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+}
